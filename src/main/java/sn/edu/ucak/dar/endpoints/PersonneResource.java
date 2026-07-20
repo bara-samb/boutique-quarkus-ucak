@@ -16,11 +16,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * Ressource REST JAX-RS pour gérer les opérations CRUD sur l'entité Personne
- * (et ses sous-types Enseignant / Etudiant, héritage single table).
- * Disponible sur le chemin "/personnes".
- */
 @Path("/personnes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -90,9 +85,7 @@ public class PersonneResource {
         return Response.ok(personne).build();
     }
 
-    /**
-     * Supprime une personne.
-     */
+
     @DELETE
     @Path("/{id}")
     @Transactional
