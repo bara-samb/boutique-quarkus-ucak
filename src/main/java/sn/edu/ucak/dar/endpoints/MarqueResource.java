@@ -12,10 +12,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
-/**
- * Ressource REST JAX-RS pour l'entité Marque.
- * Disponible sur le chemin "/marques".
- */
+// endpoint marques
 @Path("/marques")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,17 +21,13 @@ public class MarqueResource {
     @Inject
     EntityManager em;
 
-    /**
-     * Récupère toutes les marques.
-     */
+    // liste des marques
     @GET
     public List<Marque> listAll() {
         return em.createQuery("FROM Marque", Marque.class).getResultList();
     }
 
-    /**
-     * Crée une nouvelle marque.
-     */
+    // ajout d'une marque
     @POST
     @Transactional
     public Marque create(Marque marque) {

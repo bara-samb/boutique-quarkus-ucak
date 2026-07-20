@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// sous classe Personne
 @Getter
 @Setter
 @NoArgsConstructor

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+// sous classe Personne
 @Getter
 @Setter
 @NoArgsConstructor

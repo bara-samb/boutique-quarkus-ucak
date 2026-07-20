@@ -10,16 +10,14 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-/**
- * Ressource REST JAX-RS pour l'entité Personne.
- * Disponible sur le chemin "/personnes".
- */
+// endpoint personnes
 @Path("/personnes")
 public class PersonneResource {
 
     @Inject
     EntityManager em;
 
+    // ajout d'une personne
     @Transactional
     @POST
     @Produces(MediaType.APPLICATION_JSON)

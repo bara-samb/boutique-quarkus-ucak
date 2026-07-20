@@ -10,16 +10,14 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-/**
- * Ressource REST JAX-RS pour l'entité Etudiant.
- * Disponible sur le chemin "/etudiants".
- */
+// endpoint etudiants
 @Path("/etudiants")
 public class EtudiantResource {
 
     @Inject
     EntityManager em;
 
+    // ajout d'un etudiant
     @Transactional
     @POST
     @Produces(MediaType.APPLICATION_JSON)
