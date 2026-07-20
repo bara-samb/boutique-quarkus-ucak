@@ -1,4 +1,4 @@
-package sn.edu.ucak.dar;
+package sn.edu.ucak.dar.endpoints;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

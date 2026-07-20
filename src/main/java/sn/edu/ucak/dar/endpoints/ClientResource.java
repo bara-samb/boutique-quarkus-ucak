@@ -1,4 +1,4 @@
-package sn.edu.ucak.dar;
+package sn.edu.ucak.dar.endpoints;
 
 import sn.edu.ucak.dar.entities.Client;
 import sn.edu.ucak.dar.entities.Carte;
