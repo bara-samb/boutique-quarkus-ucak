@@ -1,9 +1,13 @@
 package sn.edu.ucak.dar.entities;
 
+<<<<<<< HEAD
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+=======
+import jakarta.persistence.Entity;
+>>>>>>> parent of f05c08b (Adding Enseignant and Etudiant)
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +16,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
+<<<<<<< HEAD
 @Table(name = "Enseignant")
 public class Enseignant {
     @Id
@@ -44,3 +49,9 @@ public class Enseignant {
 
 
 }
+=======
+public class Enseignant extends Personne {
+    private String matricule;
+    private String matiere;
+}
+>>>>>>> parent of f05c08b (Adding Enseignant and Etudiant)

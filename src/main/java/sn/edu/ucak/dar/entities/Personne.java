@@ -12,10 +12,18 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
+<<<<<<< HEAD
 @Table(name = "Personne")
+=======
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+>>>>>>> parent of f05c08b (Adding Enseignant and Etudiant)
 public class Personne {
     @Id
+<<<<<<< HEAD
     @Column(name = "id", nullable = false)
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+>>>>>>> parent of f05c08b (Adding Enseignant and Etudiant)
     private Integer id;
 
     @Column(name = "dateEnregistrement")
