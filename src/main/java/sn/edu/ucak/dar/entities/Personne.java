@@ -1,48 +1,40 @@
 package sn.edu.ucak.dar.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-// classe mere, table unique pour Personne/Enseignant/Etudiant
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@DiscriminatorColumn(name = "Fonction")
-//@DiscriminatorValue("Visiteur")
+@Table(name = "Personne")
 public class Personne {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String prenom;
+    @Column(name = "dateEnregistrement")
+    private Instant dateEnregistrement;
 
-    private String nom;
+    @Column(name = "dateModification")
+    private Instant dateModification;
 
+    @Column(name = "adresse")
     private String adresse;
 
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Column(name = "telephone")
     private String telephone;
 
-    private LocalDateTime dateEnregistrement;
 
-    private LocalDateTime dateModification;
-
-    // date de creation
-    @PrePersist
-    public void onCreate() {
-        dateEnregistrement = LocalDateTime.now();
-        dateModification = dateEnregistrement;
-    }
-
-    // date de modif
-    @PreUpdate
-    public void onUpdate() {
-        dateModification = LocalDateTime.now();
-    }
 }

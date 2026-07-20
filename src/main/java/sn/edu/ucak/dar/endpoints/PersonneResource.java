@@ -1,6 +1,5 @@
 package sn.edu.ucak.dar.endpoints;
 
-import sn.edu.ucak.dar.entities.Personne;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;

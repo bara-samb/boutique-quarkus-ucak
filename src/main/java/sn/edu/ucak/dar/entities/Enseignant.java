@@ -1,20 +1,46 @@
 package sn.edu.ucak.dar.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// sous classe Personne
+import java.time.Instant;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-//@DiscriminatorValue("Formateur")
-public class Enseignant extends Personne {
+@Table(name = "Enseignant")
+public class Enseignant {
+    @Id
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(name = "dateEnregistrement")
+    private Instant dateEnregistrement;
+
+    @Column(name = "dateModification")
+    private Instant dateModification;
+
+    @Column(name = "adresse")
+    private String adresse;
+
+    @Column(name = "matiere")
+    private String matiere;
+
+    @Column(name = "matricule", nullable = false)
     private String matricule;
 
-    private String matiere;
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+
 }
