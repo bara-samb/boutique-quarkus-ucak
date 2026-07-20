@@ -7,15 +7,18 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+// classe mere, table unique pour Personne/Enseignant/Etudiant
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@DiscriminatorColumn(name = "Fonction")
+//@DiscriminatorValue("Visiteur")
 public class Personne {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     private String prenom;
@@ -30,12 +33,14 @@ public class Personne {
 
     private LocalDateTime dateModification;
 
+    // date de creation
     @PrePersist
     public void onCreate() {
         dateEnregistrement = LocalDateTime.now();
         dateModification = dateEnregistrement;
     }
 
+    // date de modif
     @PreUpdate
     public void onUpdate() {
         dateModification = LocalDateTime.now();

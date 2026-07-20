@@ -16,11 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * Ressource REST JAX-RS pour gérer les opérations CRUD sur l'entité Etudiant
- * (sous-classe de Personne, héritage single table).
- * Disponible sur le chemin "/etudiants".
- */
+// endpoint etudiants
 @Path("/etudiants")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,17 +25,13 @@ public class EtudiantResource {
     @Inject
     EntityManager em;
 
-    /**
-     * Récupère tous les étudiants.
-     */
+    // liste des etudiants
     @GET
     public List<Etudiant> listAll() {
         return em.createQuery("FROM Etudiant", Etudiant.class).getResultList();
     }
 
-    /**
-     * Récupère un étudiant par son ID.
-     */
+    // recuperation d'un etudiant par id
     @GET
     @Path("/{id}")
     public Response getOne(@PathParam("id") Integer id) {
@@ -52,9 +44,7 @@ public class EtudiantResource {
         return Response.ok(etudiant).build();
     }
 
-    /**
-     * Crée un nouvel étudiant.
-     */
+    // ajout d'un etudiant
     @POST
     @Transactional
     public Response create(Etudiant etudiant) {
@@ -67,9 +57,7 @@ public class EtudiantResource {
         return Response.status(Response.Status.CREATED).entity(etudiant).build();
     }
 
-    /**
-     * Met à jour un étudiant existant.
-     */
+    // modification d'un etudiant
     @PUT
     @Path("/{id}")
     @Transactional
@@ -93,9 +81,7 @@ public class EtudiantResource {
         return Response.ok(etudiant).build();
     }
 
-    /**
-     * Supprime un étudiant.
-     */
+    // suppression d'un etudiant
     @DELETE
     @Path("/{id}")
     @Transactional

@@ -16,11 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * Ressource REST JAX-RS pour gérer les opérations CRUD sur l'entité Personne
- * (et ses sous-types Enseignant / Etudiant, héritage single table).
- * Disponible sur le chemin "/personnes".
- */
+// endpoint personnes
 @Path("/personnes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,15 +25,13 @@ public class PersonneResource {
     @Inject
     EntityManager em;
 
-
-     // Récupère toutes les personnes .
+    // liste des personnes
     @GET
     public List<Personne> listAll() {
         return em.createQuery("FROM Personne", Personne.class).getResultList();
     }
 
-
-     //Récupère une personne par son ID.
+    // recuperation d'une personne par id
     @GET
     @Path("/{id}")
     public Response getOne(@PathParam("id") Integer id) {
@@ -50,8 +44,7 @@ public class PersonneResource {
         return Response.ok(personne).build();
     }
 
-
-     //Crée une nouvelle personne (envoyer un Enseignant ou un Etudiant fonctionne aussi
+    // ajout d'une personne
     @POST
     @Transactional
     public Response create(Personne personne) {
@@ -63,9 +56,7 @@ public class PersonneResource {
         em.persist(personne);
         return Response.status(Response.Status.CREATED).entity(personne).build();
     }
-
-
-     //Met à jour les champs communs d'une personne existante.
+    // modification d'une personne
     @PUT
     @Path("/{id}")
     @Transactional
@@ -84,9 +75,7 @@ public class PersonneResource {
 
         return Response.ok(personne).build();
     }
-
-
-     //Supprime une personne.
+    // suppression d'une personne
     @DELETE
     @Path("/{id}")
     @Transactional

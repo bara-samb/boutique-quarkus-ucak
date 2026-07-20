@@ -16,10 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * Ressource REST JAX-RS pour gérer les opérations CRUD sur l'entité Marque.
- * Disponible sur le chemin "/marques".
- */
+// endpoint marques
 @Path("/marques")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -28,17 +25,13 @@ public class MarqueResource {
     @Inject
     EntityManager em;
 
-    /**
-     * Récupère toutes les marques.
-     */
+    // liste des marques
     @GET
     public List<Marque> listAll() {
         return em.createQuery("FROM Marque", Marque.class).getResultList();
     }
 
-    /**
-     * Récupère une marque par son ID.
-     */
+    // recuperation d'une marque par id
     @GET
     @Path("/{id}")
     public Response getOne(@PathParam("id") Integer id) {
@@ -51,9 +44,7 @@ public class MarqueResource {
         return Response.ok(marque).build();
     }
 
-    /**
-     * Crée une nouvelle marque.
-     */
+    // ajout d'une marque
     @POST
     @Transactional
     public Response create(Marque marque) {
@@ -66,9 +57,7 @@ public class MarqueResource {
         return Response.status(Response.Status.CREATED).entity(marque).build();
     }
 
-    /**
-     * Met à jour une marque existante.
-     */
+    // modification d'une marque
     @PUT
     @Path("/{id}")
     @Transactional
@@ -86,9 +75,7 @@ public class MarqueResource {
         return Response.ok(marque).build();
     }
 
-    /**
-     * Supprime une marque.
-     */
+    // suppression d'une marque
     @DELETE
     @Path("/{id}")
     @Transactional
